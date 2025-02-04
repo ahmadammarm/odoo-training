@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- kota tree view -->
+        <record id="desa_view_tree" model="ir.ui.view">
+            <field name="name">desa.view.tree</field>
+            <field name="model">desa</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="kode"/>
+                    <field name="description"/>
+                    <field name="kecamatan_id"/>
+                </tree>
+            </field>
+        </record>
+        <!-- kota form view -->
+        <record id="desa_view_form" model="ir.ui.view">
+            <field name="name">desa.view.form</field>
+            <field name="model">desa</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="kode"/>
+                                <field name="description"/>
+                                <field name="kecamatan_id" widget="many2one_tags"/>
+                            </group>
+                            <!-- <group>
+                                <field name="street"/>
+                                <field name="kota_id"/>
+                                <field name="kota_id" domain="[('kota_id','=',kota_id)]"/>
+                                <field name="desa_id" domain="[('kota_id','=',kota_id)]"/>
+                                <field name="desa_id" domain="[('desa_id','=',desa_id)]"/>
+                            </group> -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- kota action window -->
+        <record id="desa_action" model="ir.actions.act_window">
+            <field name="name">desa Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">desa</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="desa_menu_act" name="desa" parent="setting_menu_categ" action="desa_action" sequence="20"/>
+    </data>
+</odoo>

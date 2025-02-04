@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_user_training_course,access_user_training_course,model_training_course,base.group_user,1,1,1,1
+access_user_training_session,access_user_training_session,model_training_session,base.group_user,1,1,1,1
+access_user_instruktur,access_user_instruktur,model_instruktur,base.group_user,1,1,1,1
+access_user_keahlian,access_user_keahlian,model_keahlian,base.group_user,1,1,1,1
+access_user_propinsi,access_user_propinsi,model_propinsi,base.group_user,1,1,1,1
+access_user_kota,access_user_kota,model_kota,base.group_user,1,1,1,1
+access_user_kecamatan,access_user_kecamatan,model_kecamatan,base.group_user,1,1,1,1
+access_user_desa,access_user_desa,model_desa,base.group_user,1,1,1,1
+
+

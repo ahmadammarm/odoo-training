@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- propinsi tree view -->
+        <record id="propinsi_view_tree" model="ir.ui.view">
+            <field name="name">propinsi.view.tree</field>
+            <field name="model">propinsi</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="kode"/>
+                    <field name="name"/>
+                    <field name="singkatan"/>
+                    <field name="description"/>
+                    <field name="kota_ids"/>
+                </tree>
+            </field>
+        </record>
+        <!-- propinsi form view -->
+        <record id="propinsi_view_form" model="ir.ui.view">
+            <field name="name">propinsi.view.form</field>
+            <field name="model">propinsi</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="kode"/>
+                                <field name="name"/>
+                                <field name="singkatan"/>
+                                <field name="description"/>
+                                <field name="kota_ids" widget="one2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="kode"/>
+                                <field name="name"/>
+                                <field name="singkatan"/>
+                                <field name="description"/>
+                                <field name="kota_ids" widget="one2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- propinsi action window -->
+        <record id="propinsi_action" model="ir.actions.act_window">
+            <field name="name">Propinsi Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">Propinsi</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="propinsi_menu_act" name="Propinsi" parent="setting_menu_categ" action="propinsi_action" sequence="20"/>
+
+
+
+         <!-- kota tree view -->
+        <record id="kota_view_tree" model="ir.ui.view">
+            <field name="name">kota.view.tree</field>
+            <field name="model">kota</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="kode"/>
+                    <field name="singkatan"/>
+                    <field name="description"/>
+                    <field name="propinsi_id"/>
+                    <field name="kecamatan_ids"/>
+                </tree>
+            </field>
+        </record>
+        <!-- kota form view -->
+        <record id="kota_view_form" model="ir.ui.view">
+            <field name="name">kota.view.form</field>
+            <field name="model">kota</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="kode"/>
+                                <field name="singkatan"/>
+                                <field name="description"/>
+                                <field name="propinsi_id" widget="many2one_tags"/>
+                                <field name="kecamatan_ids" widget="one2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                                <field name="kode"/>
+                                <field name="singkatan"/>
+                                <field name="description"/>
+                                <field name="propinsi_id" widget="many2one_tags"/>
+                                <field name="kecamatan_ids" widget="one2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- kota action window -->
+        <record id="kota_action" model="ir.actions.act_window">
+            <field name="name">kota Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">Kota</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="kota_menu_act" name="Kota" parent="setting_menu_categ" action="kota_action" sequence="20"/>
+
+
+         <!-- kecamatan tree view -->
+        <record id="kecamatan_view_tree" model="ir.ui.view">
+            <field name="name">kecamatan.view.tree</field>
+            <field name="model">kecamatan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="kode"/>
+                    <field name="description"/>
+                    <field name="kota_id"/>
+                    <field name="desa_ids"/>
+                </tree>
+            </field>
+        </record>
+        <!-- kecamatan form view -->
+        <record id="kecamatan_view_form" model="ir.ui.view">
+            <field name="name">kecamatan.view.form</field>
+            <field name="model">kecamatan</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="kode"/>
+                                <field name="description"/>
+                                <field name="kota_id" widget="many2one_tags"/>
+                                <field name="desa_ids" widget="one2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                                <field name="kode"/>
+                                <field name="description"/>
+                                <field name="kota_id" widget="many2one_tags"/>
+                                <field name="desa_ids" widget="one2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- kecamatan action window -->
+        <record id="kecamatan_action" model="ir.actions.act_window">
+            <field name="name">kecamatan Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">Kecamatan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="kecamatan_menu_act" name="Kecamatan" parent="setting_menu_categ" action="kecamatan_action" sequence="20"/>
+
+
+         <!-- desa tree view -->
+        <record id="desa_view_tree" model="ir.ui.view">
+            <field name="name">desa.view.tree</field>
+            <field name="model">desa</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="kode"/>
+                    <field name="description"/>
+                    <field name="kecamatan_id"/>
+                </tree>
+            </field>
+        </record>
+        <!-- desa form view -->
+        <record id="desa_view_form" model="ir.ui.view">
+            <field name="name">desa.view.form</field>
+            <field name="model">desa</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="kode"/>
+                                <field name="description"/>
+                                <field name="kecamatan_id" widget="many2one_tags"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                                <field name="kode"/>
+                                <field name="description"/>
+                                <field name="kecamatan_id" widget="many2one_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- desa action window -->
+        <record id="desa_action" model="ir.actions.act_window">
+            <field name="name">desa Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">Desa</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="desa_menu_act" name="Desa" parent="setting_menu_categ" action="desa_action" sequence="20"/>
+    </data>
+</odoo>

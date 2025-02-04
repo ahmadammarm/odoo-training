@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- pemain_timnas tree view -->
+        <record id="pemain_timnas_view_tree" model="ir.ui.view">
+            <field name="name">pemain_timnas.view.tree</field>
+            <field name="model">pemain_timnas</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nama"/>
+                    <field name="klub"/>
+                    <field name="nomor_punggung"/>
+                    <field name="id_posisi"/>
+                </tree>
+            </field>
+        </record>
+        <!-- pemain_timnas form view -->
+        <record id="pemain_timnas_view_form" model="ir.ui.view">
+            <field name="name">pemain_timnas.view.form</field>
+            <field name="model">pemain_timnas</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="nama"/>
+                            <field name="klub"/>
+                            <field name="nomor_punggung"/>
+                            <field name="id_posisi" widget="many2one_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- pemain_timnas action window -->
+        <record id="pemain_timnas_action" model="ir.actions.act_window">
+            <field name="name">Pemain Timnas Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pemain_timnas</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="pemain_timnas_menu_act" name="Pemain Timnas" parent="setting_menu_categ" action="pemain_timnas_action" sequence="20"/>
+    </data>
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- propinsi tree view -->
+        <record id="propinsi_view_tree" model="ir.ui.view">
+            <field name="name">propinsi.view.tree</field>
+            <field name="model">propinsi</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="kode"/>
+                    <field name="name"/>
+                    <field name="singkatan"/>
+                    <field name="description"/>
+                    <field name="kota_ids"/>
+                </tree>
+            </field>
+        </record>
+        <!-- propinsi form view -->
+        <record id="propinsi_view_form" model="ir.ui.view">
+            <field name="name">propinsi.view.form</field>
+            <field name="model">propinsi</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="kode"/>
+                                <field name="name"/>
+                                <field name="singkatan"/>
+                                <field name="description"/>
+                                <field name="kota_ids" widget="one2many_tags"/>
+                            </group>
+                            <!-- <group>
+                                <field name="street"/>
+                                <field name="propinsi_id"/>
+                                <field name="kota_id" domain="[('propinsi_id','=',propinsi_id)]"/>
+                                <field name="kecamatan_id" domain="[('kota_id','=',kota_id)]"/>
+                                <field name="desa_id" domain="[('kecamatan_id','=',kecamatan_id)]"/>
+                            </group> -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- propinsi action window -->
+        <record id="propinsi_action" model="ir.actions.act_window">
+            <field name="name">propinsi Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">propinsi</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="propinsi_menu_act" name="propinsi" parent="setting_menu_categ" action="propinsi_action" sequence="20"/>
+    </data>
+</odoo>
