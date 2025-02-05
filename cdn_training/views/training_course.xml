@@ -8,10 +8,10 @@
             <field name="arch" type="xml">
                 <tree>
                     <!-- Add your fields here -->
-                    <field name="name"/>
-                    <field name="description"/>
-                    <field name="user_id"/>
-                    <field name="tempat"/>
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="user_id" />
+                    <field name="tempat" />
                 </tree>
             </field>
         </record>
@@ -22,44 +22,53 @@
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
+                        <!-- <widget name="web_ribbon" text="Selesai" bg_color="bg-info"
+                            attrs="{'invisible':[('state','!=','done')]}" /> -->
                         <group>
                             <!-- Add your fields here -->
-                            <field name="name"/>
-                            <field name="user_id"/>
+                            <field name="name" />
+                            <field name="user_id" />
                         </group>
                         <notebook>
                             <page name="sesi" string="Sesi">
                                 <group>
                                     <field name="session_line" nolabel="1" colspan="2">
-                                                <tree string="Sesi" editable="bottom">
-                                                    <field name="name"/>
-                                                    <field name="start_date"/>
-                                                    <field name="duration"/>
-                                                    <field name="seats"/>
-                                                </tree>
-                                                <form string='Sesi'>
+                                        <tree string="Sesi" editable="bottom">
+                                            <field name="name" />
+                                            <field name="start_date" />
+                                            <field name="duration" />
+                                            <field name="seats" />
+                                            <field name="jml_peserta" />
+                                        </tree>
+                                        <!-- <form string='Sesi'>
                                             <group>
-                                                <field name="name"/>
-                                                <field name="start_date"/>
-                                                <field name="duration"/>
-                                                <field name="seats"/>
+                                                <field name="name" />
+                                                <field name="start_date" />
+                                                <field name="duration" />
+                                                <field name="jml_peserta" />
                                             </group>
-                                        </form>
+                                        </form> -->
                                     </field>
                                 </group>
                             </page>
                             <page name="deskripsi" string="Keterangan">
                                 <group>
-                                    <field name="description"/>
+                                    <field name="description" />
                                 </group>
                             </page>
                             <page name="tempat" string="Tempat Kursus">
                                 <group>
-                                    <field name="tempat"/>
+                                    <field name="tempat" />
                                 </group>
                             </page>
                         </notebook>
                     </sheet>
+                    <!-- <div class="oe_chatter">
+                        <field name="message_follower_ids" />
+                        <field name="activity_ids" />
+                        <field name="message_ids" />
+                    </div> -->
+
                 </form>
             </field>
         </record>
@@ -68,17 +77,19 @@
             <field name="name">Kursus</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">training_course</field>
-            <field name="view_mode">tree,form</field    >
+            <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     <!-- Add Text Here -->
-                </p><p>
-                  
-                
+                </p>
+                <p>
+
+
                 </p>
             </field>
         </record>
-        <menuitem id="training_course_menu_action" name="Training Course" parent="setting_menu_categ" action="training_course_action" sequence="10"/>
+        <menuitem id="training_course_menu_action" name="Training Course"
+            parent="setting_menu_categ" action="training_course_action" sequence="10" />
     </data>
-    
+
 </odoo>

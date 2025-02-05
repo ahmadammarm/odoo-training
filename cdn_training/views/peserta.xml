@@ -9,7 +9,7 @@
                 <tree>
                     <!-- Add your fields here -->
                     <field name="name" />
-                    <field name="jenis_kel" />
+                    <field name="jenis_kelamin" />
                     <field name="street" />
                     <field name="mobile" />
                     <field name="email" />
@@ -24,17 +24,26 @@
                 <form string="">
                     <sheet>
                         <field name="image_1920" widget="image" class="oe_avatar" />
+                        <div class="oe_title">
+                            <h3>
+                                <label for="no_peserta" string="No Peserta" />
+                            </h3>
+                            <h1>
+                                <field name="no_peserta" />
+                            </h1>
+                        </div>
+
                         <group name="identitas_peserta" string="Identitas Siswa">
                             <!-- Add your fields here -->
                             <group>
                                 <field name="name" />
-                                <field name="jenis_kel" />
+                                <field name="jenis_kelamin" required="1" />
                                 <field name="email" />
                             </group>
                             <group>
                                 <field name="tmp_lahir" />
                                 <field name="tgl_lahir" />
-                                <field name="mobile" />
+                                <field name="mobile" required="1" />
                             </group>
                         </group>
                         <group name="tempat_tinggal" string="Tempat Tinggal Siswa">
@@ -68,11 +77,20 @@
                                 <field name="hp_pasangan" />
                             </group>
                         </group>
-
                     </sheet>
                 </form>
             </field>
         </record>
+
+        <record id="seq_peserta" model="ir.sequence">
+            <field name="name">Urutan Peserta</field>
+            <field name="code">peserta</field>
+            <field name="prefix">A/%(y)s/%(month)s/</field>
+            <field name="padding">4</field>
+            <field name="number_increment">1</field>
+            <field name="implementation">standard</field>
+        </record>
+
 
         <!-- peserta action window -->
         <record id="peserta_action" model="ir.actions.act_window">
@@ -90,10 +108,49 @@
                 </p>
             </field>
         </record>
+        <!-- Action untuk peserta laki-laki -->
+        <record id="peserta_action_laki" model="ir.actions.act_window">
+            <field name="name">Data peserta Laki-laki</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">peserta</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('jenis_kelamin','=','l')]</field>
+            <field name="context">{'default_jenis_kelamin':'l'}</field>
 
-        <menuitem id="peserta_menu_act" name="peserta" parent="pengaturan_menu_categ"
-            action="peserta_action" sequence="25" />
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
 
+                </p>
+            </field>
+        </record>
+
+        <!-- Action untuk peserta perempuan -->
+        <record id="peserta_action_perempuan" model="ir.actions.act_window">
+            <field name="name">Data peserta Perempuan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">peserta</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('jenis_kelamin','=','p')]</field>
+            <field name="context">{'default_jenis_kelamin':'p'}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+
+
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="peserta_laki_menu_act" name="Peserta Laki-laki" parent="setting_menu_categ"
+            action="peserta_action_laki" sequence="25" />
+        <menuitem id="peserta_perempuan_menu_act" name="Peserta Perempuan"
+            parent="setting_menu_categ" action="peserta_action_perempuan" sequence="26" />
 
     </data>
 

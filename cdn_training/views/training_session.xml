@@ -6,13 +6,14 @@
             <field name="name">training_session.view.tree</field>
             <field name="model">training_session</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-danger="jml_peserta==0">
                     <!-- Add your fields here -->
-                    <field name="start_date"/>
-                    <field name="name"/>
-                    <field name="duration"/>
-                    <field name="seat"/>
-                    <field name="instruktur_id"/>
+                    <field name="start_date" />
+                    <field name="name" />
+                    <field name="duration" />
+                    <field name="seats" />
+                    <field name="instruktur_id" />
+                    <field name="jml_peserta" />
                 </tree>
             </field>
         </record>
@@ -23,25 +24,46 @@
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
+                        <header>
+                            <button string="Proses" name="action_confirm" type="object"
+                                class="oe_highlight" states="draft" />
+                            <button string="Selesai" name="action_done" type="object"
+                                states="confirm" />
+                            <button string="Reset" name="action_draft" type="object"
+                                states="confirm,done" />
+                            <field name="state" widget="statusbar"
+                                statusbar_visible="draft,confirm,done" />
+                        </header>
+
                         <group string="Informasi Kursus">
                             <group>
-                                <field name="start_date"/>
-                                <field name="name"/>
-                                <field name="course_id"/>
+                                <field name="start_date" />
+                                <field name="name" />
+                                <field name="course_id" />
                             </group>
                             <group>
-                                <field name="duration"/>
-                                <field name="seat"/>
-                                <field name="instruktur_id"/>
+                                <field name="duration" />
+                                <field name="seats" />
+                                <field name="instruktur_id" />
+                            </group>
+                        </group>
+                        <group name="instruktur" string="Data Instruktur">
+                            <group>
+                                <field name="instruktur_id" />
+                                <field name="jenis_kelamin" />
+                            </group>
+                            <group>
+                                <field name="no_hp" />
+                                <field name="email" />
                             </group>
                         </group>
                         <notebook>
                             <page string="Peserta">
                                 <field name="peserta_ids">
                                     <tree>
-                                        <field name="name"/>
-                                        <field name="jenis_kel"/>
-                                        <field name="mobile"/>
+                                        <field name="name" />
+                                        <field name="jenis_kelamin" />
+                                        <field name="mobile" />
                                     </tree>
                                 </field>
                             </page>
@@ -50,27 +72,44 @@
                 </form>
             </field>
         </record>
+        
+        <!-- training.session calendar view -->
+        <record id="training_session_view_calendar" model="ir.ui.view">
+            <field name="name">training_session.view.calendar</field>
+            <field name="model">training_session</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendar Description" date_start="start_date" mode="month">
+                    <!-- Add your fields here -->
+                    <field name="name" filters="1" />
+                    <field name="instruktur_id" />
+
+                </calendar>
+            </field>
+        </record>
+
 
         <!-- training_session action window -->
         <record id="training_session_action" model="ir.actions.act_window">
             <field name="name">Sesi Training</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">training_session</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     <!-- Add Text Here -->
-                </p><p>
-                    <!-- More details about what a user can do with this object will be OK --> 
-                
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+
                 </p>
             </field>
         </record>
 
         <!-- This Menu Item must have a parent and an action -->
-        <menuitem id="sesi_training_menu_act" name="Sesi Training" parent="training_menu_categ" action="training_session_action" sequence="10"/>
-        
-    
+        <menuitem id="sesi_training_menu_act" name="Sesi Training" parent="training_menu_categ"
+            action="training_session_action" sequence="10" />
+
+
     </data>
-    
+
 </odoo>
